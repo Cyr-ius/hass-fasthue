@@ -32,7 +32,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
     # Add one sensor entity for each hue bridge and link it to the hub device
     base_name = config_entry.data.get(CONF_NAME, DEFAULT_SENSOR_NAME)
-    initial_scan_interval = max(1, config_entry.data.get(CONF_SCAN_INTERVAL))
+    initial_scan_interval = max(0.1, config_entry.data.get(CONF_SCAN_INTERVAL))
     device_registry: dr.DeviceRegistry = await dr.async_get_registry(hass)
     new_entities = []
     for i, (b_entry_id, bridge) in enumerate(hass.data[HUE_DOMAIN].items()):
@@ -98,7 +98,7 @@ class HuePollingInterval(RestoreEntity):
 
     async def async_set_update_interval(self, scan_interval):
         """Service call to change the update interval of the hue bridge."""
-        self._set_new_update_interval(max(timedelta(seconds=1), scan_interval))
+        self._set_new_update_interval(max(timedelta(seconds=0.1), scan_interval))
 
     async def async_will_remove_from_hass(self) -> None:
         """Cancel listeners for sensor updates."""
