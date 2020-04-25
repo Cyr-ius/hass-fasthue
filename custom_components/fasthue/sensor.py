@@ -73,7 +73,7 @@ class HuePollingInterval(RestoreEntity):
         name: str,
         device: dr.DeviceEntry,
         sensor_manager: SensorManager,
-        scan_interval: int,
+        scan_interval: float,
     ):
         """Initialize the sensor object."""
         self._name = name
