@@ -17,7 +17,7 @@ DEFAULT_ICON = "mdi:refresh"
 CONFIG_SCHEMA = vol.Schema(
     {
         vol.Optional(CONF_NAME, default=DEFAULT_SENSOR_NAME): str,
-        vol.Required(CONF_SCAN_INTERVAL, default=2): int,
+        vol.Required(CONF_SCAN_INTERVAL, default=2): float,
     },
     extra=vol.ALLOW_EXTRA,
 )
